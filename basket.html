@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basket | Movie Rentals</title>
+    <link href="/styles/main.css" rel="stylesheet" />
+    <link href="/styles/mainBasketChanges.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="sidebar">
+      <a href="/shop.html">Movie Rentals</a>
+      <br />
+      <br />
+      Genres:
+      <ul>
+        <li>Action</li>
+        <li>Adventure</li>
+        <li>Animation</li>
+        <li>Comedy</li>
+        <li>Drama</li>
+        <li>Horror</li>
+        <li>Science fiction</li>
+      </ul>
+      <br />
+      <br />
+      <br />
+      <button onclick="localStorage.setItem('basket', '[]')">Empty Basket</button>
+      <br />
+      <br />
+      <form action="/login.html">
+        <input type="submit" value="Log Out" />
+      </form>
+    </nav>
+    <div id="main">
+      <h1 style="text-align: center">Basket</h1>
+        <div style="width: 50%; margin: auto; padding: 2em; text-align: right;" id="container">
+          <table id="basketTable">
+            <thead>
+              <tr>
+                <th>Movie Title</th>
+                <th>Rental Period</th>
+                <th>Cost</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="basket"></tbody>
+          </table>
+          <a onclick="removeAll()" id="clear-basket" class="btn">Clear Basket</a>
+          <br>
+          <br>
+          <hr />
+          <div style="text-align: right"><strong>Subtotal:</strong> £<span id="sub-price"></span></div>
+          <div style="text-align: right"><strong>VAT:</strong> £<span id="vat-price"></span></div>
+          <br>
+          <div style="text-align: right"><strong>Total Price:</strong> £<span id="total-price"></span></div>
+          <hr />
+          <br>
+          <a href="/shop.html" id="continue-shopping" class="btn">Continue Shopping</a>
+          <a href="/order.html" id="checkout" class="btn">Go to checkout</a>
+        </div>
+    </div>
+  </body>
+
+  <script src="./js/movies.js"></script>
+  <script>
+    const basketContainer = document.getElementById("basket");
+
+    let basket = JSON.parse(localStorage.getItem("basket") ?? "[]");
+
+    basket = removeDuplicates(basket);
+
+    let totalPrice = 0.0;
+
+    if (basket.length == 0){
+      document.getElementById("basketTable").remove();
+      document.getElementById("container").insertAdjacentHTML(
+        "afterbegin",
+        `
+          <p style="text-align: left"><strong>You have no items in your basket.</strong></p>
+        `
+      );
+      highlight("continue-shopping");
+    }
+    else{
+      basket.forEach((basketItem) => {
+        basketContainer.insertAdjacentHTML(
+          "beforeend",
+          `
+              <tr>
+                  <td>${basketItem.name}</td>
+                  <td><input type="number" min="1" value="${basketItem.rentDays}" onchange="updateQuantity(this)" size="2"/> day(s)</td>
+                  <td>£${(basketItem.price * basketItem.rentDays).toFixed(2)}</td>
+                  <td><button onclick="remove(this)">Remove Item</button></td>
+              </tr>
+          `
+        );
+        totalPrice += parseFloat(basketItem.price * basketItem.rentDays);
+      });
+
+      document.getElementById("sub-price").textContent = totalPrice.toFixed(2);
+      document.getElementById("vat-price").textContent = (totalPrice * 0.2).toFixed(2);
+      document.getElementById("total-price").textContent = (totalPrice * 1.2).toFixed(2);
+
+      highlight("checkout");
+    }  
+
+    function remove(obj){
+      localStorage.setItem('basket', JSON.stringify(basket.filter(item => item.name !== obj.parentElement.parentElement.children[0].innerText), null, 2));
+      window.location.reload();
+    }
+
+    function removeAll(){
+      localStorage.setItem('basket', '[]');
+      window.location.reload();
+    }
+
+    function updateQuantity(obj){
+      let itemName = obj.parentElement.parentElement.children[0].innerText;
+      let newDays = obj.value;
+
+      localStorage.setItem('basket', JSON.stringify(basket.map(item =>
+        item.name === itemName ? { ...item, rentDays: newDays } : item
+        ))
+      );  
+      window.location.reload();
+    }
+
+    function highlight(id){
+      let target = document.getElementById(id);
+      target.classList.add("btn-target");
+    }
+
+    function removeDuplicates(arr){
+      return arr.filter((item, index, self) =>
+        index === self.findIndex((obj) => obj.id === item.id)
+      );
+    }
+  </script>
+</html>
