@@ -1,0 +1,166 @@
+.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+  color: initial;
+}
+
+.movie {
+  display: flex;
+  padding: 10px;
+}
+
+.add-to-basket {
+  width: 100px;
+  height: 40px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.horizontal-margin {
+  margin: 0 0.75em;
+}
+/*
+https://www.quackit.com/html/html_editors/scratchpad/?example=/css/flexbox/tutorial/nested_flex_containers_example_2
+*/
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+#main {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+#main > article {
+  display: flex;
+  flex-wrap: wrap;
+}
+nav,
+#main > aside {
+  background: rgb(94, 0, 0);
+  color: white;
+  font-weight: bold;
+}
+nav {
+  order: -1;
+}
+header,
+footer {
+  background: red;
+  height: 5vh;
+  color: white;
+}
+header,
+footer,
+article,
+nav,
+aside {
+  padding: 1em;
+}
+
+
+.rentForm {
+  position: absolute;
+  right: 0;
+}
+
+/* ---------------- Shop Page ------------------ */
+
+.movie-list {
+  background-color: black;
+  display: flex;
+}
+.movie {
+  margin: 10px;
+  border: rgb(94, 0, 0) 6px solid;
+  background-color: black;
+  color: lightgray;
+  border-radius: 3%;;
+}
+.movie p {
+  color: gray;
+}
+
+.movie-form {
+  padding-top: 5px;
+  background-color: rgb(55, 0, 0);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: auto; */
+}
+.movie-form-input {
+  display: flex;
+  flex-direction: row;
+}
+.movie-form input {
+  width: 100%;
+  width: 40px;
+  margin: 10px;
+  margin-left: -20px;
+  padding: 2px 0px;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  background-color: lightgray;
+}
+.movie button {
+  background-color: lightgray;
+  margin-top: 0.5em;
+  max-height: 2em;
+  min-width: 90%;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.movie-image {
+  border-radius: 3%;;
+}
+.movie-text {
+  width: 200px;
+  margin: 0 0.75em;
+  display: flex;
+  flex-direction: column;
+}
+.movie form input {
+  margin-top: 10px;
+  min-width: 100%;
+  background-color: lightgray;
+  border: rgb(55, 0, 0) 6px solid;
+  background-color: rgb(55, 0, 0);
+  color: lightgray;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.movie form {
+  margin-top: auto;
+}
+
+/**************** Nav-bar **********************/
+
+nav > a, nav > a:visited {
+  color: whitesmoke;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input[type=submit]{
+  cursor: pointer;
+}
+
