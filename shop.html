@@ -1,3 +1,4 @@
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,9 +14,10 @@
     />
   </head>
   <body>
+    <div id="notification"></div>
     <div id="main">
       <nav class="sidebar">
-        <a href="/shop.html"type="button">Movie Rentals</a>
+        <a href="/shop.html"><button style="width: 250px; height: 50px; background-color: rgb(94, 0, 0); color: whitesmoke;">Movie Rentals</button></a>
         <br />
         <br />
         Genres:
@@ -31,14 +33,18 @@
         <br />
         <br />
         <form action="/basket.html">
-          <input style="width: 250px; height: 150px" type="submit" value="View Basket" />
+          <input style="width: 250px; height: 50px; background-color: rgb(94, 0, 0); color: whitesmoke;" type="submit" value="View Basket" />
         </form>
         <br />
-        <button onclick="localStorage.setItem('basket', '[]')">Empty Basket</button>
+        <button style="width: 250px; height: 50px; background-color: rgb(94, 0, 0); color: whitesmoke;" 
+        onclick="(()=>{
+          localStorage.setItem('basket', '[]');
+          showNotification('Basket Emptied')
+          })()">Empty Basket</button>
         <br />
         <br />
         <form action="/login.html">
-          <input type="submit" value="Log Out" />
+          <input style="width: 250px; height: 50px; background-color: rgb(94, 0, 0); color: whitesmoke;" type="submit" value="Log Out" />
         </form>
       </nav>
 
@@ -61,7 +67,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-1" value="3" /><br />
+                <input type="number" id="days-to-rent-1" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(1)">Add to Basket</button>
               </div>
             </div>
@@ -86,7 +92,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-2" value="3" /><br />
+                <input type="number" id="days-to-rent-2" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(2)">Add to Basket</button>
               </div>
             </div>
@@ -111,7 +117,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-3" value="3" /><br />
+                <input type="number" id="days-to-rent-3" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(3)">Add to Basket</button>
               </div>
             </div>
@@ -136,7 +142,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-4" value="3" /><br />
+                <input type="number" id="days-to-rent-4" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(4)">Add to Basket</button>
               </div>
             </div>
@@ -161,7 +167,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-5" value="3" /><br />
+                <input type="number" id="days-to-rent-5" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(5)">Add to Basket</button>
               </div>
             </div>
@@ -186,7 +192,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-6" value="3" /><br />
+                <input type="number" id="days-to-rent-6" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(6)">Add to Basket</button>
               </div>
             </div>
@@ -214,7 +220,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-7" value="3" /><br />
+                <input type="number" id="days-to-rent-7" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(7)">Add to Basket</button>
               </div>
             </div>
@@ -239,7 +245,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-8" value="3" /><br />
+                <input type="number" id="days-to-rent-8" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(8)">Add to Basket</button>
               </div>
             </div>
@@ -264,7 +270,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-9" value="3" /><br />
+                <input type="number" id="days-to-rent-9" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(9)">Add to Basket</button>
               </div>
             </div>
@@ -289,7 +295,7 @@
             <div class="movie-form">
               <label>Days to rent:</label><br />
               <div class="movie-form-input">
-                <input type="number" id="days-to-rent-10" value="3" /><br />
+                <input type="number" id="days-to-rent-10" min="1" value="3" /><br />
                 <button style="width: 100px; height: 50px" onclick="addToBasket(10)">Add to Basket</button>
               </div>
             </div>
@@ -312,6 +318,16 @@
         movie.rentDays = parseInt(document.getElementById("days-to-rent-" + movieId).value);
         basket.push(movie);
         localStorage.setItem("basket", JSON.stringify(basket));
+        showNotification( "Added '" + movie.name + "' to Basket (" + movie.rentDays + " days)");
+      }
+      function showNotification(message) {
+        const notification = document.getElementById('notification');
+        notification.textContent = message;
+        notification.classList.add('show');
+
+        setTimeout(() => {
+          notification.classList.remove('show');
+        }, 3000);
       }
     </script>
   </body>
