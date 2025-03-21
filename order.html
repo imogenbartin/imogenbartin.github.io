@@ -14,13 +14,13 @@
     />
   </head>
   <body>
-    <header>
+    <header style="background-color:  rgb(94, 0, 0);">
       <strong>Movie Rentals</strong>
     </header>
     <div id="main">
       <article>
         <h1 style="text-align: centre">Payment Details</h1>
-        <div style="background-color: lightgrey; width: 70%; margin: auto; padding: 2em">
+        <div style="background-color: lightgrey; width: 85%; margin: auto; padding: 2em">
           <form method="GET" action="/invoice.html" onsubmit="storeData()">
             <div>
               <span>Title:</span>
@@ -40,10 +40,10 @@
               <input type="text" id="addressCountry" />
             </div>
             <div>
-              <span>Postcode:</span>
-              <input type="text" id="addressPostcode" />
               <span>City:</span>
               <input type="text" id="addressCity" />
+              <span>Postcode:</span>
+              <input type="text" id="addressPostcode" />
             </div>
             <hr />
             <div>
@@ -56,11 +56,14 @@
               <label for="mastercard">Mastercard</label>
               <input type="radio" name="card" value="switch" id="switch" />
               <label for="switch">Switch</label>
+            </div>
+            <div>
               <span>Card Number:</span>
-              <input type="number" id="cardNumber"/>
+              <input type="number" id="cardNumber" min="100000000000000" max="9999999999999999"/>
               <span>Expiry Date:</span>
-              <input type="text" id="expiryMonth" />
-              <input type="text" id="expiryYear"/>
+              <input type="number" id="expiryMonth" placeholder="MM" min="01" max="12"/>
+              <text>/</text>
+              <input type="number" id="expiryYear" placeholder="YY" min="00" max="99"/>
             </div>
             <div>
               <button type="button" onclick="window.location.href='/basket.html'">Back To Basket</a>
